@@ -15,9 +15,9 @@ const Product = () => {
   return (
     <div className={classes.container}>
       <div className={classes.left}>
-        {filters.map((item) => {
+        {filters.map((item, index) => {
           return (
-            <div key={item} className={classes.filter}>
+            <div key={index} className={classes.filter}>
               <input type="checkbox" name={item} value={item} />
               <label htmlFor="price">{item}</label>
             </div>
@@ -26,9 +26,9 @@ const Product = () => {
       </div>
       <div className={classes.right}>
         <div className={classes.list}>
-          {items.map((item) => {
+          {items.map((item, index) => {
             return (
-              <div className={classes.item} key={item.id}>
+              <div className={classes.item} key={index}>
                 <img src={item.img} alt={item.anchorText} width="200px" />
                 <div className={classes.desc}>
                   <h4>{item.title}</h4>
