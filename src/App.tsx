@@ -6,6 +6,8 @@ import Auth from "./pages/Auth";
 import Cart from "./pages/Cart";
 import Landing from "./pages/Landing";
 import Footer from "./components/Footer";
+import Product from "./pages/Product";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,20 +33,25 @@ function App() {
     <div>
       <Header />
       <main>
-        <Switch>
-          <Route path="/" exact={true}>
-            <Landing />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-          <Route path="/auth">
-            <Auth />
-          </Route>
-          <Route path="*">
-            <Redirect to="/" exact={true} />
-          </Route>
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route path="/" exact={true}>
+              <Landing />
+            </Route>
+            <Route path="/product" exact={true}>
+              <Product />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
+            <Route path="/auth">
+              <Auth />
+            </Route>
+            <Route path="*">
+              <Redirect to="/" exact={true} />
+            </Route>
+          </Switch>
+        </ScrollToTop>
       </main>
       <Footer />
       <Toaster />

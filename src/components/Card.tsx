@@ -11,7 +11,7 @@ const Card: React.FC<{ detail: CardDetail }> = (props) => {
         src={props.detail.img}
         alt={props.detail.title}
       />
-      <Link className={classes.link} to="">
+      <Link className={classes.link} to="/product">
         {props.detail.anchorText}
       </Link>
     </div>

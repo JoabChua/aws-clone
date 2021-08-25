@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 
 import classes from "./CarouselCard.module.css";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 const responsive = {
   desktop: {
@@ -37,7 +38,9 @@ const CarouselCard: React.FC<{ header: string; essential: string[] }> = (
         {props.essential.map((pic: string) => {
           return (
             <div key={pic}>
-              <img src={pic} alt={pic} width="200" height="200" />
+              <Link className={classes.link} to="/product">
+                <img src={pic} alt={pic} width="200" height="200" />
+              </Link>
             </div>
           );
         })}
