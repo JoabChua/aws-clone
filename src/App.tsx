@@ -1,24 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Redirect, Switch } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
+import Header from "./components/Header";
+import Auth from "./pages/Auth";
+import Cart from "./pages/Cart";
+import Landing from "./pages/Landing";
+import Footer from "./components/Footer";
 
 function App() {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // useEffect(() => {
+  //   const auth = localStorage.getItem("auth");
+  //   if (auth === "1") {
+  //     setIsLoggedIn(true);
+  //   }
+  // }, []);
+
+  // const loginHandler = () => {
+  //   setIsLoggedIn(true);
+  //   localStorage.setItem("auth", "1");
+  // };
+
+  // const logoutHandler = () => {
+  //   setIsLoggedIn(false);
+  //   localStorage.removeItem("auth");
+  // };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <main>
+        <Switch>
+          <Route path="/" exact={true}>
+            <Landing />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+          <Route path="/auth">
+            <Auth />
+          </Route>
+          <Route path="*">
+            <Redirect to="/" exact={true} />
+          </Route>
+        </Switch>
+      </main>
+      <Footer />
+      <Toaster />
     </div>
   );
 }

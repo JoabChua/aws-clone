@@ -1,0 +1,7 @@
+.carousel-slider > button:hover {
+  background: transparent !important;
+}
+
+.wrapper {
+  max-height: 250px;
+}

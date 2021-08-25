@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+}
+
+form {
+  padding: 20px;
+  background: gold;
+  border-radius: 10px;
+}
+
+form > .form_group {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.form_group > label {
+  padding: 8px 0;
+}
+
+.form_group > input {
+  min-width: 250px;
+  border-radius: 5px;
+  height: 25px;
+  border-color: goldenrod;
+}
+
+button {
+  margin: 12px;
+  background: green;
+  padding: 4px 16px;
+  border-radius: 10px;
+  color: white;
+  min-width: 90px;
+}
+
+.signup {
+  background-color: maroon;
+}
+
+.btn_wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+p {
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}

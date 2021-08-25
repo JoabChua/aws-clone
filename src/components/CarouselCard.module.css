@@ -1,0 +1,8 @@
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.react-multi-carousel-item {
+  width: 300px;
+}

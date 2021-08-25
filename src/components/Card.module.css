@@ -1,0 +1,22 @@
+.card {
+  max-width: 200px;
+  margin: 8px;
+  min-height: 230px;
+  background: aliceblue;
+  padding: 16px;
+}
+
+h4 {
+  min-height: 36px;
+}
+
+.img {
+  max-width: 200px;
+  margin: 8px 0;
+  max-height: 230px;
+  height: 230px;
+}
+
+.link {
+  font-size: 12px;
+}
