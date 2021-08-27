@@ -23,24 +23,28 @@ export const CAROUSELITEMS: CardDetail[] = [
     img: c1,
     anchorText: "Learn more",
     id: 1,
+    desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
   },
   {
     title: "National Day Sale | Deals up to 30% off.",
     img: c2,
     anchorText: "Shop now",
     id: 2,
+    desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
   },
   {
     title: "Today's Top Deal.",
     img: c3,
     anchorText: "Shop more deals",
     id: 3,
+    desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
   },
   {
     title: "Delivering with smiles",
     img: c4,
     anchorText: "Learn more",
     id: 4,
+    desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
   },
 ];
 

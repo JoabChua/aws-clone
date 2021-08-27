@@ -8,6 +8,7 @@ import Landing from "./pages/Landing";
 import Footer from "./components/Footer";
 import Product from "./pages/Product";
 import ScrollToTop from "./components/ScrollToTop";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route path="/product" exact={true}>
               <Product />
+            </Route>
+            <Route path="/product/:productId">
+              <ProductDetail />
             </Route>
             <Route path="/cart">
               <Cart />

@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+}
+
+.item {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 40px 0;
+  display: flex;
+}
+
+.desc {
+  padding: 0 20px;
+}

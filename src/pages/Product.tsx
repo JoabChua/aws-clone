@@ -32,7 +32,7 @@ const Product = () => {
                 <img src={item.img} alt={item.anchorText} width="200px" />
                 <div className={classes.desc}>
                   <h4>{item.title}</h4>
-                  <Link to="/product/:id">
+                  <Link to={`/product/` + item.id}>
                     <p>{item.anchorText}</p>
                   </Link>
                 </div>
