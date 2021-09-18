@@ -29,11 +29,19 @@ const ProductDetail = () => {
         <img src={item.img} alt={item.anchorText} width="200px" />
         <div className={classes.desc}>
           <h4>{item.desc}</h4>
-          <button>Add to Cart</button>
+          <button className={classes.cart}>Add to Cart</button>
           <div className={classes.amount}>
-            <button onClick={increment}>+</button>
+            <button
+              className={classes.counter}
+              onClick={decrement}
+              disabled={count <= 0}
+            >
+              -
+            </button>
             <span>{count}</span>
-            <button onClick={decrement}>-</button>
+            <button className={classes.counter} onClick={increment}>
+              +
+            </button>
           </div>
         </div>
       </div>

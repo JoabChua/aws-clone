@@ -13,3 +13,18 @@
 .desc {
   padding: 0 20px;
 }
+
+.cart {
+  width: 120px;
+  height: 32px;
+  background-color: blueviolet;
+}
+
+.counter {
+  min-width: 5px;
+  width: 5px;
+  background: transparent;
+  color: black;
+  border: 0;
+  cursor: pointer;
+}
