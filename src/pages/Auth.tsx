@@ -30,12 +30,12 @@ const Auth: React.FC = () => {
       pwRef.current!.value = "";
       history.push("/");
       toast.success("Successfully logged in.", {
-        position: "top-right",
+        position: "bottom-right",
         duration: 5000,
       });
     } else {
       toast.error("Please enter a valid email and password.", {
-        position: "top-right",
+        position: "bottom-right",
         duration: 5000,
       });
       return;

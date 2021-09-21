@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 import { CardDetail } from "../components/Card";
 
 export interface Cart {
@@ -36,17 +37,26 @@ const cartSlice = createSlice({
 
       localStorage.setItem("cartCount", state.cartCount.toString());
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      toast.success("Successfully added item into cart.", {
+        position: "bottom-right",
+        duration: 3000,
+      });
     },
     removeFromCart: (state, action: PayloadAction<CartItem>) => {
       const idx = state.cartItems.findIndex(
         (cartItem) => cartItem.id === action.payload.id,
       );
       if (idx > -1) {
+        state.cartCount -= state.cartItems[idx].count;
         state.cartItems.splice(idx, 1);
       }
 
       localStorage.setItem("cartCount", state.cartCount.toString());
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      toast.success("Item removed from cart", {
+        position: "bottom-right",
+        duration: 3000,
+      });
     },
     incrementInCart: (state, action: PayloadAction<{ id: number }>) => {
       const idx = state.cartItems.findIndex(
