@@ -1,3 +1,4 @@
+import { TrashIcon } from "@heroicons/react/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppDispatch, RootState } from "../store";
@@ -15,6 +16,10 @@ const Cart = () => {
 
   const decrement = (item: CartItem) => {
     dispatch(cartActions.decrementInCart({ id: item.id }));
+  };
+
+  const removeFromCartHandler = (item: CartItem) => {
+    dispatch(cartActions.removeFromCart(item));
   };
 
   return (
@@ -52,6 +57,12 @@ const Cart = () => {
                       onClick={() => increment(item)}
                     >
                       +
+                    </button>
+                    <button
+                      className={classes.removeBtn}
+                      onClick={() => removeFromCartHandler(item)}
+                    >
+                      <TrashIcon className="icon" />
                     </button>
                   </div>
                 </div>

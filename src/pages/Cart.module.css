@@ -40,3 +40,13 @@
   border: 0;
   cursor: pointer;
 }
+
+.removeBtn {
+  background: transparent;
+  color: black;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: auto;
+  cursor: pointer;
+}
