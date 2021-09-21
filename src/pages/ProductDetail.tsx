@@ -1,19 +1,27 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { CardDetail } from "../components/Card";
 import { CAROUSELITEMS } from "../data/dummy";
+import { AppDispatch } from "../store";
+import { cartActions } from "../store/cart-slice";
 import classes from "./ProductDetail.module.css";
 
 const items = [...CAROUSELITEMS];
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const addToCartHandler = () => {
+    dispatch(cartActions.addToCart({ ...item, count }));
+  };
 
   const item = items.find(
     (prod) => prod.id.toString() === productId,
   ) as CardDetail;
-  console.log(item);
 
   const increment = () => {
     setCount((count) => count + 1);
@@ -29,12 +37,14 @@ const ProductDetail = () => {
         <img src={item.img} alt={item.anchorText} width="200px" />
         <div className={classes.desc}>
           <h4>{item.desc}</h4>
-          <button className={classes.cart}>Add to Cart</button>
+          <button className={classes.cart} onClick={addToCartHandler}>
+            Add to Cart
+          </button>
           <div className={classes.amount}>
             <button
               className={classes.counter}
               onClick={decrement}
-              disabled={count <= 0}
+              disabled={count <= 1}
             >
               -
             </button>

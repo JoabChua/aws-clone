@@ -86,3 +86,22 @@ li > *,
   padding-left: 8px;
   margin: 4px 0;
 }
+
+.count {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  height: 16px;
+  width: 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: -8px;
+  left: 8px;
+}
+
+.cart {
+  position: relative;
+  padding-right: 8px;
+}

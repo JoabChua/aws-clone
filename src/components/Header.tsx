@@ -17,6 +17,8 @@ import { authActions } from "../store/auth-slice";
 
 const Header: React.FC = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const cartCount = useSelector((state: RootState) => state.cart.cartCount);
+
   const dispatch = useDispatch<AppDispatch>();
 
   const logoutHandler = () => {
@@ -40,7 +42,10 @@ const Header: React.FC = () => {
             {isLoggedIn && (
               <li>
                 <NavLink to="/cart" activeClassName={classes.active}>
-                  <ShoppingCartIcon className="icon" />
+                  <div className={classes.cart}>
+                    <ShoppingCartIcon className="icon" />
+                    <span className={classes.count}>{cartCount}</span>
+                  </div>
                   Cart
                 </NavLink>
               </li>
