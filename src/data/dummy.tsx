@@ -24,6 +24,7 @@ export const CAROUSELITEMS: CardDetail[] = [
     anchorText: "Learn more",
     id: 1,
     desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
+    price: 19.99,
   },
   {
     title: "National Day Sale | Deals up to 30% off.",
@@ -31,6 +32,7 @@ export const CAROUSELITEMS: CardDetail[] = [
     anchorText: "Shop now",
     id: 2,
     desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
+    price: 29.99,
   },
   {
     title: "Today's Top Deal.",
@@ -38,6 +40,7 @@ export const CAROUSELITEMS: CardDetail[] = [
     anchorText: "Shop more deals",
     id: 3,
     desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
+    price: 9.99,
   },
   {
     title: "Delivering with smiles",
@@ -45,6 +48,7 @@ export const CAROUSELITEMS: CardDetail[] = [
     anchorText: "Learn more",
     id: 4,
     desc: "(9.9 READY STOCK) SUPER PROMO BUNDLE Kaiser GATE PRO MOST POPULAR with Installation Included for Digital",
+    price: 39.99,
   },
 ];
 

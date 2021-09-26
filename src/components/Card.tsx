@@ -26,4 +26,5 @@ export interface CardDetail {
   img: string;
   anchorText: string;
   desc: string;
+  price: number;
 }

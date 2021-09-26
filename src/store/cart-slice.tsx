@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { WritableDraft } from "@reduxjs/toolkit/node_modules/immer/dist/internal";
 import toast from "react-hot-toast";
 import { CardDetail } from "../components/Card";
 
 export interface Cart {
   cartCount: number;
   cartItems: CartItem[];
+  totalPrice: number;
 }
 
 export interface CartItem extends CardDetail {
@@ -18,6 +20,15 @@ const initState: Cart = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems")!)
     : ([] as CartItem[]),
+  totalPrice: localStorage.getItem("totalPrice")
+    ? +localStorage.getItem("totalPrice")!
+    : 0,
+};
+
+const setInfoIntoLocalStorage = (state: WritableDraft<Cart>) => {
+  localStorage.setItem("cartCount", state.cartCount.toString());
+  localStorage.setItem("totalPrice", state.totalPrice.toString());
+  localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
 };
 
 const cartSlice = createSlice({
@@ -29,14 +40,15 @@ const cartSlice = createSlice({
       const idx = state.cartItems.findIndex(
         (cartItem) => cartItem.id === action.payload.id,
       );
+      state.totalPrice += action.payload.count * action.payload.price;
+
       if (idx > -1) {
         state.cartItems[idx].count += action.payload.count;
       } else {
         state.cartItems.push(action.payload);
       }
 
-      localStorage.setItem("cartCount", state.cartCount.toString());
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      setInfoIntoLocalStorage(state);
       toast.success("Successfully added item into cart.", {
         position: "bottom-right",
         duration: 3000,
@@ -48,11 +60,11 @@ const cartSlice = createSlice({
       );
       if (idx > -1) {
         state.cartCount -= state.cartItems[idx].count;
+        state.totalPrice -= action.payload.count * action.payload.price;
         state.cartItems.splice(idx, 1);
       }
 
-      localStorage.setItem("cartCount", state.cartCount.toString());
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      setInfoIntoLocalStorage(state);
       toast.success("Item removed from cart", {
         position: "bottom-right",
         duration: 3000,
@@ -64,11 +76,10 @@ const cartSlice = createSlice({
       );
       if (idx > -1) {
         state.cartItems[idx].count++;
+        state.totalPrice += state.cartItems[idx].price;
         state.cartCount++;
       }
-
-      localStorage.setItem("cartCount", state.cartCount.toString());
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      setInfoIntoLocalStorage(state);
     },
     decrementInCart: (state, action: PayloadAction<{ id: number }>) => {
       const idx = state.cartItems.findIndex(
@@ -76,15 +87,14 @@ const cartSlice = createSlice({
       );
       if (idx > -1) {
         state.cartItems[idx].count--;
+        state.totalPrice -= state.cartItems[idx].price;
         state.cartCount--;
       }
 
       if (state.cartItems[idx].count === 0) {
         state.cartItems.splice(idx, 1);
       }
-
-      localStorage.setItem("cartCount", state.cartCount.toString());
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      setInfoIntoLocalStorage(state);
     },
   },
 });

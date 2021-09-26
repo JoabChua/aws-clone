@@ -7,6 +7,7 @@ import classes from "./Cart.module.css";
 
 const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -31,7 +32,7 @@ const Cart = () => {
         </div>
       )}
       {cartItems.length > 0 && (
-        <div className={classes.wrapper}>
+        <div className={classes.wrapper_cart}>
           <ul>
             {cartItems.map((item: CartItem) => {
               return (
@@ -43,32 +44,43 @@ const Cart = () => {
                       <p>{item.anchorText}</p>
                     </Link>
                   </div>
-                  <div className={classes.cartcount}>
-                    <button
-                      className={classes.counter}
-                      onClick={() => decrement(item)}
-                      disabled={item.count <= 0}
-                    >
-                      -
-                    </button>
-                    <span>{item.count}</span>
-                    <button
-                      className={classes.counter}
-                      onClick={() => increment(item)}
-                    >
-                      +
-                    </button>
-                    <button
-                      className={classes.removeBtn}
-                      onClick={() => removeFromCartHandler(item)}
-                    >
-                      <TrashIcon className="icon" />
-                    </button>
+                  <div className={classes.right}>
+                    <div className={classes.cartcount}>
+                      <button
+                        className={classes.counter}
+                        onClick={() => decrement(item)}
+                        disabled={item.count <= 0}
+                      >
+                        -
+                      </button>
+                      <span>{item.count}</span>
+                      <button
+                        className={classes.counter}
+                        onClick={() => increment(item)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className={classes.delete}>
+                      <button
+                        className={classes.removeBtn}
+                        onClick={() => removeFromCartHandler(item)}
+                      >
+                        <TrashIcon className="icon" />
+                      </button>
+                    </div>
+                    <div className={classes.price}>${item.price}</div>
                   </div>
                 </div>
               );
             })}
           </ul>
+          <div className={classes.cartout}>
+            <span className={classes.total}>
+              Total: ${totalPrice.toFixed(2)}
+            </span>
+            <button className={classes.checkout}>Checkout</button>
+          </div>
         </div>
       )}
     </div>

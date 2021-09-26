@@ -4,6 +4,16 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  min-height: 300px;
+  width: 100%;
+}
+
+.wrapper_cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
   width: 100%;
 }
 
@@ -49,4 +59,34 @@
   border: 0;
   min-width: auto;
   cursor: pointer;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.price {
+  text-align: center;
+}
+
+.delete {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.cartout {
+  display: flex;
+  flex-direction: column;
+}
+
+.total {
+  text-align: center;
+}
+
+.checkout {
+  padding: 8px 24px;
+  background-color: orange;
+  font-size: 18px;
 }

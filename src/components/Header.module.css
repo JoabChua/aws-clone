@@ -90,12 +90,13 @@ li > *,
 .count {
   background: white;
   color: black;
-  border-radius: 10px;
+  border-radius: 40%;
   height: 16px;
   width: 16px;
   text-align: center;
   font-size: 12px;
   font-weight: 700;
+  padding: 0 2px;
   position: absolute;
   top: -8px;
   left: 8px;
@@ -103,5 +104,5 @@ li > *,
 
 .cart {
   position: relative;
-  padding-right: 8px;
+  padding-right: 14px;
 }
