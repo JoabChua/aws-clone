@@ -90,3 +90,11 @@
   background-color: orange;
   font-size: 18px;
 }
+
+.modal {
+  width: clamp(50%, 760px, 50%);
+  background: #222c38;
+  height: clamp(50%, 760px, 50%);
+  margin: 8rem auto;
+  border-radius: 10%;
+}

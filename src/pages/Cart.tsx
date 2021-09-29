@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import { AppDispatch, RootState } from "../store";
 import { cartActions, CartItem } from "../store/cart-slice";
 import classes from "./Cart.module.css";
+import Modal from "react-modal";
+import { useState } from "react";
+import CheckoutModal from "../components/CheckoutModal";
 
 const Cart = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
 
@@ -22,6 +26,23 @@ const Cart = () => {
   const removeFromCartHandler = (item: CartItem) => {
     dispatch(cartActions.removeFromCart(item));
   };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const numberWithCommas = (num: number) => {
+    return num
+      .toFixed(2)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const priceString = numberWithCommas(totalPrice);
 
   return (
     <div className={classes.container}>
@@ -76,13 +97,20 @@ const Cart = () => {
             })}
           </ul>
           <div className={classes.cartout}>
-            <span className={classes.total}>
-              Total: ${totalPrice.toFixed(2)}
-            </span>
-            <button className={classes.checkout}>Checkout</button>
+            <span className={classes.total}>Total: ${priceString}</span>
+            <button className={classes.checkout} onClick={openModal}>
+              Checkout
+            </button>
           </div>
         </div>
       )}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        className={classes.modal}
+      >
+        <CheckoutModal />
+      </Modal>
     </div>
   );
 };
