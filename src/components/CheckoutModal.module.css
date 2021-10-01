@@ -29,4 +29,19 @@
   width: 120px;
   height: 35px;
   background: cadetblue;
+  color: black;
+  cursor: pointer;
+}
+
+.close {
+  color: black;
+  width: 120px;
+  height: 35px;
+  background: rgb(228, 162, 162);
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

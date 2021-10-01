@@ -35,6 +35,12 @@ const Cart = () => {
     setModalIsOpen(true);
   };
 
+  const makePayment = (ev: { email: string; credit: string }) => {
+    console.log(ev);
+    dispatch(cartActions.clearCart());
+    closeModal();
+  };
+
   const numberWithCommas = (num: number) => {
     return num
       .toFixed(2)
@@ -109,10 +115,12 @@ const Cart = () => {
         onRequestClose={closeModal}
         className={classes.modal}
       >
-        <CheckoutModal />
+        <CheckoutModal onPaying={makePayment} onCloseModal={closeModal} />
       </Modal>
     </div>
   );
 };
+
+Modal.setAppElement("#root");
 
 export default Cart;

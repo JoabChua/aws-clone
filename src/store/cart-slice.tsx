@@ -96,6 +96,16 @@ const cartSlice = createSlice({
       }
       setInfoIntoLocalStorage(state);
     },
+    clearCart: (state) => {
+      state.cartCount = 0;
+      state.cartItems = [];
+      state.totalPrice = 0;
+      setInfoIntoLocalStorage(state);
+      toast.success("Payment made was successful.", {
+        position: "bottom-right",
+        duration: 3000,
+      });
+    },
   },
 });
 
