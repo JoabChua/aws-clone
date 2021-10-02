@@ -49,6 +49,7 @@ const cartSlice = createSlice({
       }
 
       setInfoIntoLocalStorage(state);
+      toast.remove();
       toast.success("Successfully added item into cart.", {
         position: "bottom-right",
         duration: 3000,
@@ -65,6 +66,7 @@ const cartSlice = createSlice({
       }
 
       setInfoIntoLocalStorage(state);
+      toast.remove();
       toast.success("Item removed from cart", {
         position: "bottom-right",
         duration: 3000,
@@ -101,6 +103,7 @@ const cartSlice = createSlice({
       state.cartItems = [];
       state.totalPrice = 0;
       setInfoIntoLocalStorage(state);
+      toast.remove();
       toast.success("Payment made was successful.", {
         position: "bottom-right",
         duration: 3000,

@@ -29,14 +29,16 @@ const Auth: React.FC = () => {
       emailRef.current!.value = "";
       pwRef.current!.value = "";
       history.push("/");
+      toast.remove();
       toast.success("Successfully logged in.", {
         position: "bottom-right",
-        duration: 5000,
+        duration: 3000,
       });
     } else {
+      toast.remove();
       toast.error("Please enter a valid email and password.", {
         position: "bottom-right",
-        duration: 5000,
+        duration: 3000,
       });
       return;
     }

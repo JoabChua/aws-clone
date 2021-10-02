@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router";
 import { CardDetail } from "../components/Card";
 import { CAROUSELITEMS } from "../data/dummy";
-import { AppDispatch } from "../store";
+import { AppDispatch, RootState } from "../store";
 import { cartActions } from "../store/cart-slice";
 import classes from "./ProductDetail.module.css";
 
@@ -13,10 +14,22 @@ const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
   const [count, setCount] = useState(1);
 
+  const history = useHistory();
+
   const dispatch = useDispatch<AppDispatch>();
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   const addToCartHandler = () => {
-    dispatch(cartActions.addToCart({ ...item, count }));
+    if (isLoggedIn) {
+      dispatch(cartActions.addToCart({ ...item, count }));
+    } else {
+      toast.remove();
+      toast.error("Please login first.", {
+        position: "bottom-right",
+        duration: 3000,
+      });
+      history.push("/auth");
+    }
   };
 
   const item = items.find(
