@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.confirm {
+  width: 120px;
+  height: 35px;
+  background: cadetblue;
+  color: black;
+  cursor: pointer;
+}
+
+.close {
+  color: black;
+  width: 120px;
+  height: 35px;
+  background: rgb(228, 162, 162);
+  cursor: pointer;
+}
+
+.title {
+  color: white;
+  font-size: 2rem;
+  padding: 2rem 0;
+}
+
+.msg {
+  color: whitesmoke;
+  margin-bottom: 2rem;
+}
