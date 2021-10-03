@@ -28,3 +28,9 @@
   border: 0;
   cursor: pointer;
 }
+
+.price {
+  justify-content: flex-start;
+  font-size: 1.2rem;
+  font-weight: 400;
+}

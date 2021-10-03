@@ -50,6 +50,7 @@ const ProductDetail = () => {
         <img src={item.img} alt={item.anchorText} width="200px" />
         <div className={classes.desc}>
           <h4>{item.desc}</h4>
+          <p className={classes.price}>Price: ${item.price}</p>
           <button className={classes.cart} onClick={addToCartHandler}>
             Add to Cart
           </button>
