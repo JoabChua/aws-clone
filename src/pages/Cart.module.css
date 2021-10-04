@@ -55,7 +55,7 @@
   background: transparent;
   color: black;
   margin: 0;
-  padding: 0;
+  padding: 0 1rem;
   border: 0;
   min-width: auto;
   cursor: pointer;
@@ -63,12 +63,14 @@
 
 .right {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
 .price {
   text-align: center;
+  margin-left: 1rem;
 }
 
 .delete {

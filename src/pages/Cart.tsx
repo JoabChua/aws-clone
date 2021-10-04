@@ -7,9 +7,12 @@ import classes from "./Cart.module.css";
 import Modal from "react-modal";
 import { useState } from "react";
 import CheckoutModal from "../components/CheckoutModal";
+import ConfirmationModal from "../components/ConfirmationModal";
 
 const Cart = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [openConfirmModal, setOpenConfirmModal] = useState(false);
+  const [selectedRemoveItem, setselectedRemoveItem] = useState({} as CartItem);
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
 
@@ -23,8 +26,25 @@ const Cart = () => {
     dispatch(cartActions.decrementInCart({ id: item.id }));
   };
 
+  const openRemoveFromCartConfirmationDialog = (item: CartItem) => {
+    setselectedRemoveItem(item);
+    setOpenConfirmModal(true);
+  };
+
+  const closeRemoveFromCartConfirmationDialog = () => {
+    setselectedRemoveItem({} as CartItem);
+    setOpenConfirmModal(false);
+  };
+
   const removeFromCartHandler = (item: CartItem) => {
     dispatch(cartActions.removeFromCart(item));
+    setselectedRemoveItem({} as CartItem);
+    closeRemoveFromCartConfirmationDialog();
+  };
+
+  const closeAllModal = () => {
+    setOpenConfirmModal(false);
+    setModalIsOpen(false);
   };
 
   const closeModal = () => {
@@ -55,7 +75,9 @@ const Cart = () => {
       {cartItems.length === 0 && (
         <div className={classes.wrapper}>
           <h1>No item in cart!</h1>
-          <button>Go and shop more!</button>
+          <Link to={`/product`}>
+            <button>Go and shop more!</button>
+          </Link>
         </div>
       )}
       {cartItems.length > 0 && (
@@ -91,7 +113,9 @@ const Cart = () => {
                     <div className={classes.delete}>
                       <button
                         className={classes.removeBtn}
-                        onClick={() => removeFromCartHandler(item)}
+                        onClick={() =>
+                          openRemoveFromCartConfirmationDialog(item)
+                        }
                       >
                         <TrashIcon className="icon" />
                       </button>
@@ -111,11 +135,21 @@ const Cart = () => {
         </div>
       )}
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={modalIsOpen || openConfirmModal}
+        onRequestClose={closeAllModal}
         className={classes.modal}
       >
-        <CheckoutModal onPaying={makePayment} onCloseModal={closeModal} />
+        {modalIsOpen && (
+          <CheckoutModal onPaying={makePayment} onCloseModal={closeModal} />
+        )}
+        {openConfirmModal && (
+          <ConfirmationModal
+            title="Are you sure"
+            msg="Remove selected item from cart?"
+            onConfirm={() => removeFromCartHandler(selectedRemoveItem)}
+            onCancel={closeRemoveFromCartConfirmationDialog}
+          />
+        )}
       </Modal>
     </div>
   );
