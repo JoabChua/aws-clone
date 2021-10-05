@@ -104,7 +104,7 @@ const cartSlice = createSlice({
       state.totalPrice = 0;
       setInfoIntoLocalStorage(state);
       toast.remove();
-      toast.success("Payment made was successful.", {
+      toast.success("Payment was successfully made.", {
         position: "bottom-right",
         duration: 3000,
       });
