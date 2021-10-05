@@ -71,7 +71,7 @@ const Cart = () => {
   const priceString = numberWithCommas(totalPrice);
 
   return (
-    <div className={classes.container}>
+    <div className={`${cartItems.length === 0 ? classes.container : ""}`}>
       {cartItems.length === 0 && (
         <div className={classes.wrapper}>
           <h1>No item in cart!</h1>
