@@ -18,7 +18,7 @@
 }
 
 .container {
-  min-height: 300px;
+  width: 100%;
 }
 
 .item {
@@ -95,9 +95,9 @@
 }
 
 .modal {
-  width: clamp(50%, 760px, 50%);
-  background: #222c38;
-  height: clamp(50%, 760px, 50%);
-  margin: 8rem auto;
-  border-radius: 10%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
 }

@@ -18,47 +18,49 @@ const CheckoutModal: React.FC<{
 
   return (
     <div className={classes.checkout_container}>
-      <div className={classes.form_row}>
-        <label htmlFor="name" className={classes.input_label}>
-          Email
-        </label>
-        <input
-          type="email"
-          name="name"
-          id="name"
-          value={email}
-          onChange={emailHandler}
-          className={classes.input_text}
-        />
-      </div>
+      <div className={classes.checkout_wrapper}>
+        <div className={classes.form_row}>
+          <label htmlFor="name" className={classes.input_label}>
+            Email
+          </label>
+          <input
+            type="email"
+            name="name"
+            id="name"
+            value={email}
+            onChange={emailHandler}
+            className={classes.input_text}
+          />
+        </div>
 
-      <div className={classes.form_row}>
-        <label htmlFor="credit" className={classes.input_label}>
-          Credit Card
-        </label>
-        <input
-          type="text"
-          name="credit"
-          id="credit"
-          value={credit}
-          onChange={creditHandler}
-          className={classes.input_text}
-        />
-      </div>
+        <div className={classes.form_row}>
+          <label htmlFor="credit" className={classes.input_label}>
+            Credit Card
+          </label>
+          <input
+            type="text"
+            name="credit"
+            id="credit"
+            value={credit}
+            onChange={creditHandler}
+            className={classes.input_text}
+          />
+        </div>
 
-      <div className={classes.btngroup}>
-        <button
-          className={`${classes.payment} + ${
-            email && credit ? "" : classes.disabled
-          }`}
-          onClick={() => props.onPaying({ email, credit })}
-          disabled={!credit && !email}
-        >
-          Pay Now
-        </button>
-        <button className={classes.close} onClick={props.onCloseModal}>
-          Cancel
-        </button>
+        <div className={classes.btngroup}>
+          <button
+            className={`${classes.payment} + ${
+              email && credit ? "" : classes.disabled
+            }`}
+            onClick={() => props.onPaying({ email, credit })}
+            disabled={!credit && !email}
+          >
+            Pay Now
+          </button>
+          <button className={classes.close} onClick={props.onCloseModal}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

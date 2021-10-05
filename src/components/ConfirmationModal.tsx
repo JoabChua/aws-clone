@@ -8,16 +8,18 @@ const ConfirmationModal: React.FC<{
 }> = (props) => {
   return (
     <div className={classes.container}>
-      {props.title && <div className={classes.title}>{props.title}</div>}
-      {props.msg && <div className={classes.msg}>{props.msg}</div>}
+      <div className={classes.wrapper}>
+        {props.title && <div className={classes.title}>{props.title}</div>}
+        {props.msg && <div className={classes.msg}>{props.msg}</div>}
 
-      <div className={classes.btngroup}>
-        <button className={classes.confirm} onClick={() => props.onConfirm()}>
-          Confirm
-        </button>
-        <button className={classes.close} onClick={props.onCancel}>
-          Cancel
-        </button>
+        <div className={classes.btngroup}>
+          <button className={classes.confirm} onClick={() => props.onConfirm()}>
+            Confirm
+          </button>
+          <button className={classes.close} onClick={props.onCancel}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
