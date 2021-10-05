@@ -31,9 +31,9 @@ function App() {
   // };
 
   return (
-    <div>
+    <div className="main_wrapper">
       <Header />
-      <main>
+      <main className="main_article">
         <ScrollToTop>
           <Switch>
             <Route path="/" exact={true}>
