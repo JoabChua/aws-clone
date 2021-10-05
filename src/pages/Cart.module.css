@@ -91,6 +91,7 @@
   padding: 8px 24px;
   background-color: orange;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .modal {
