@@ -7,22 +7,33 @@ import {
   MenuIcon,
   AcademicCapIcon,
 } from "@heroicons/react/solid";
-
+import Modal from "react-modal";
 import classes from "./Header.module.css";
 import "../App.css";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { authActions } from "../store/auth-slice";
+import ConfirmationModal from "./ConfirmationModal";
 
 const Header: React.FC = () => {
+  const [openConfirmModal, setOpenConfirmModal] = useState(false);
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const cartCount = useSelector((state: RootState) => state.cart.cartCount);
 
   const dispatch = useDispatch<AppDispatch>();
 
+  const openConfirmationDialog = () => {
+    setOpenConfirmModal(true);
+  };
+
+  const closeConfirmationDialog = () => {
+    setOpenConfirmModal(false);
+  };
+
   const logoutHandler = () => {
     dispatch(authActions.logout());
+    closeConfirmationDialog();
   };
 
   return (
@@ -60,7 +71,7 @@ const Header: React.FC = () => {
             )}
             {isLoggedIn && (
               <li>
-                <NavLink to="/" onClick={logoutHandler}>
+                <NavLink to="/" onClick={openConfirmationDialog}>
                   <LogoutIcon className="icon" />
                   Logout
                 </NavLink>
@@ -87,6 +98,21 @@ const Header: React.FC = () => {
           React Prime
         </div>
       </div>
+
+      <Modal
+        isOpen={openConfirmModal}
+        onRequestClose={closeConfirmationDialog}
+        className={classes.modal}
+      >
+        {openConfirmModal && (
+          <ConfirmationModal
+            title="Are you sure"
+            msg="Do you want to log out from your account?"
+            onConfirm={logoutHandler}
+            onCancel={closeConfirmationDialog}
+          />
+        )}
+      </Modal>
     </React.Fragment>
   );
 };
