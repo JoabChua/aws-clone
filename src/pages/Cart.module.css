@@ -24,7 +24,6 @@
 .item {
   display: flex;
   padding: 16px;
-  margin: 0 8px;
   border-bottom: 1px solid rgba(157, 151, 151, 0.356);
 }
 

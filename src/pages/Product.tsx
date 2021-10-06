@@ -1,3 +1,5 @@
+import { ChevronDoubleRightIcon, StarIcon } from "@heroicons/react/solid";
+import { StarIcon as Star } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import { CAROUSELITEMS, FILTERS } from "../data/dummy";
 import classes from "./Product.module.css";
@@ -30,12 +32,25 @@ const Product = () => {
             return (
               <div className={classes.item} key={index}>
                 <img src={item.img} alt={item.anchorText} width="200px" />
-                <div className={classes.desc}>
-                  <h4>{item.title}</h4>
-                  <Link to={`/product/` + item.id}>
-                    <p>{item.anchorText}</p>
-                  </Link>
+
+                <div className={classes.info}>
+                  <h4 className={classes.title}>{item.title}</h4>
+                  <h4 className={classes.rating}>
+                    4.0 / 5.0 - 200 Ratings
+                    <div className={classes.stars}>
+                      <StarIcon className={classes.icon} />
+                      <StarIcon className={classes.icon} />
+                      <StarIcon className={classes.icon} />
+                      <StarIcon className={classes.icon} />
+                      <Star className={classes.outline} />
+                    </div>
+                  </h4>
+                  <h4>${item.price}</h4>
                 </div>
+                <Link to={`/product/` + item.id} className={classes.more}>
+                  <ChevronDoubleRightIcon />
+                  <p>View</p>
+                </Link>
               </div>
             );
           })}
