@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 export interface Auth {
   isLoggedIn: Boolean;
@@ -29,6 +30,12 @@ const authSlice = createSlice({
     logout: (state: Auth) => {
       state.isLoggedIn = false;
       localStorage.removeItem("auth");
+
+      toast.remove();
+      toast.success("Successfully logged out", {
+        position: "bottom-right",
+        duration: 3000,
+      });
     },
   },
 });
